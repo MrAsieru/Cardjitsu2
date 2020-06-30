@@ -59,7 +59,7 @@ public class ListaJokalariak {
 		String izenaLokala = Kontsola.getKontsola().testuaIrakurri();
 		if (izenaLokala.isEmpty()) izenaLokala = "Jokalaria";
 		Kontsola.getKontsola().inprimatu("Aurkaria: ");
-		String izenaBot = "Sensei";
+		String izenaBot = "patata";
 		if (izenaBot.isEmpty()) izenaBot = "Sensei";
 		
 		
