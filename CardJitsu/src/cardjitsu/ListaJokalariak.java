@@ -1,5 +1,6 @@
 package cardjitsu;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -43,6 +44,7 @@ public class ListaJokalariak {
 	}
 	
 	public void partidaBerriaHasi() throws KartakEzAurkitutaException {
+		
 		//Titulua inprimatu
 		Kontsola.getKontsola().kontsolaGarbitu();
 		Kontsola.getKontsola().inprimatuLinea("   ____              _           _ _ _             ","","lar","");
@@ -103,6 +105,53 @@ public class ListaJokalariak {
 			}
 		}
 		
+		Kontsola.getKontsola().kontsolaGarbitu();
+		
+		//Musika ipini edo ez
+		Kontsola.getKontsola().inprimatuLinea("Musika entzun nahi duzu? (bai/ez)");
+		String erantzuna = Kontsola.getKontsola().testuaIrakurri();
+		if(erantzuna.equalsIgnoreCase("bai")) 
+		{
+			if(zailtasunaZenb==1) 
+			{
+				try {
+					if (System.getProperty("os.name").contains("Windows")) {
+						new ProcessBuilder("cmd", "/c", "C:\\Program Files\\CardJitsu\\Resources\\Music\\Easy_Theme.mp3").inheritIO().start().waitFor();
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+			else if(zailtasunaZenb==2)
+			{
+				try {
+					if (System.getProperty("os.name").contains("Windows")) {
+						new ProcessBuilder("cmd", "/c", "C:\\Program Files\\CardJitsu\\Resources\\Music\\Normal_Theme.mp3").inheritIO().start().waitFor();
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+			else if(zailtasunaZenb==3) 
+			{
+				try {
+					if (System.getProperty("os.name").contains("Windows")) {
+						new ProcessBuilder("cmd", "/c", "C:\\Program Files\\CardJitsu\\Resources\\Music\\Hard_Theme.mp3").inheritIO().start().waitFor();
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		
+		
 		//Jokalariak sortu
 		this.jokalariak[0] = new JokalariaLokala(izenaLokala);
 		this.jokalariak[1] = null;
@@ -127,6 +176,36 @@ public class ListaJokalariak {
 		}
 		
 		Jokalaria irabazlea = this.txandaBerria();
+		
+		//Bukaerako musika ipini
+		if(erantzuna.equalsIgnoreCase(erantzuna)) 
+		{
+			if(irabazlea instanceof JokalariaLokala) 
+			{
+				try {
+					if (System.getProperty("os.name").contains("Windows")) {
+						new ProcessBuilder("cmd", "/c", "C:\\\\Program Files\\\\CardJitsu\\\\Resources\\\\Music\\\\Victory.mp3").inheritIO().start().waitFor();
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+			else 
+			{
+				try {
+					if (System.getProperty("os.name").contains("Windows")) {
+						new ProcessBuilder("cmd", "/c", "C:\\\\Program Files\\\\CardJitsu\\\\Resources\\\\Music\\\\Defeat.mp3").inheritIO().start().waitFor();
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
 		
 		//Irabazleari zorionak eman      
 		Kontsola.getKontsola().inprimatuLinea("   Gordetako kartak   ","","bel","zur");
