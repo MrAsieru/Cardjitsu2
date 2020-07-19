@@ -45,6 +45,19 @@ public class ListaJokalariak {
 	
 	public void partidaBerriaHasi() throws KartakEzAurkitutaException {
 		
+		//Eliminar toda la musica que haya
+		try 
+		{
+			new ProcessBuilder("cmd", "/c", "Taskkill /IM vlc.exe /F").inheritIO().start().waitFor();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		} 
+		catch (InterruptedException e){
+			e.printStackTrace();
+		}
+		
+		
 		//Titulua inprimatu
 		Kontsola.getKontsola().kontsolaGarbitu();
 		Kontsola.getKontsola().inprimatuLinea("   ____              _           _ _ _             ","","lar","");
@@ -112,41 +125,21 @@ public class ListaJokalariak {
 		String erantzuna = Kontsola.getKontsola().testuaIrakurri();
 		if(erantzuna.equalsIgnoreCase("bai")) 
 		{
-			if(zailtasunaZenb==1) 
+			try 
 			{
-				try {
-					if (System.getProperty("os.name").contains("Windows")) {
-						new ProcessBuilder("cmd", "/c", "C:\\Program Files\\CardJitsu\\Resources\\Music\\Easy_Theme.mp3").inheritIO().start().waitFor();
-					}
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+				
+				if (zailtasunaZenb==1 && System.getProperty("os.name").contains("Windows")) {
+					new ProcessBuilder("cmd", "/c", "C:\\CardJitsu\\Resources\\VLCPortable\\VLCPortable.exe --qt-start-minimized C:\\CardJitsu\\Resources\\Music\\Easy_Theme.mp3").inheritIO().start();
+				} 
+				else if (zailtasunaZenb==2 && System.getProperty("os.name").contains("Windows")) {
+					new ProcessBuilder("cmd", "/c", "C:\\CardJitsu\\Resources\\VLCPortable\\VLCPortable.exe --qt-start-minimized C:\\CardJitsu\\Resources\\Music\\Normal_Theme.mp3").inheritIO().start();
 				}
-			}
-			else if(zailtasunaZenb==2)
-			{
-				try {
-					if (System.getProperty("os.name").contains("Windows")) {
-						new ProcessBuilder("cmd", "/c", "C:\\Program Files\\CardJitsu\\Resources\\Music\\Normal_Theme.mp3").inheritIO().start().waitFor();
-					}
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+				else if (zailtasunaZenb==3 && System.getProperty("os.name").contains("Windows")) {
+					new ProcessBuilder("cmd", "/c", "C:\\CardJitsu\\Resources\\VLCPortable\\VLCPortable.exe --qt-start-minimized C:\\CardJitsu\\Resources\\Music\\Hard_Theme.mp3").inheritIO().start();
 				}
-			}
-			else if(zailtasunaZenb==3) 
-			{
-				try {
-					if (System.getProperty("os.name").contains("Windows")) {
-						new ProcessBuilder("cmd", "/c", "C:\\Program Files\\CardJitsu\\Resources\\Music\\Hard_Theme.mp3").inheritIO().start().waitFor();
-					}
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+			} 
+			catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
 		
@@ -178,31 +171,31 @@ public class ListaJokalariak {
 		Jokalaria irabazlea = this.txandaBerria();
 		
 		//Bukaerako musika ipini
-		if(erantzuna.equalsIgnoreCase(erantzuna)) 
+		if(erantzuna.equalsIgnoreCase(erantzuna))
 		{
-			if(irabazlea instanceof JokalariaLokala) 
-			{
-				try {
-					if (System.getProperty("os.name").contains("Windows")) {
-						new ProcessBuilder("cmd", "/c", "C:\\\\Program Files\\\\CardJitsu\\\\Resources\\\\Music\\\\Victory.mp3").inheritIO().start().waitFor();
-					}
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
+			try {
+				new ProcessBuilder("cmd", "/c", "Taskkill /IM vlc.exe /F").inheritIO().start().waitFor();
+			}
+			catch (IOException e) {
+				e.printStackTrace();
+			} 
+			catch (InterruptedException e){
+				e.printStackTrace();
+			}
+			
+			try {
+				
+				if (erantzuna.equalsIgnoreCase("bai") && irabazlea instanceof JokalariaLokala && System.getProperty("os.name").contains("Windows")) 
+				{
+					new ProcessBuilder("cmd", "/c", "C:\\CardJitsu\\Resources\\VLCPortable\\VLCPortable.exe --qt-start-minimized C:\\CardJitsu\\Resources\\Music\\Victory.mp3").inheritIO().start();
+				}
+				else if(erantzuna.equalsIgnoreCase("bai") && irabazlea instanceof JokalariaBot && System.getProperty("os.name").contains("Windows"))
+				{
+					new ProcessBuilder("cmd", "/c", "C:\\CardJitsu\\Resources\\VLCPortable\\VLCPortable.exe --qt-start-minimized C:\\CardJitsu\\Resources\\Music\\Defeat.mp3").inheritIO().start();
 				}
 			}
-			else 
-			{
-				try {
-					if (System.getProperty("os.name").contains("Windows")) {
-						new ProcessBuilder("cmd", "/c", "C:\\\\Program Files\\\\CardJitsu\\\\Resources\\\\Music\\\\Defeat.mp3").inheritIO().start().waitFor();
-					}
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+			catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
 		
