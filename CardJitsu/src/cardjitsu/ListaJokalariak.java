@@ -129,13 +129,13 @@ public class ListaJokalariak {
 			{
 				
 				if (zailtasunaZenb==1 && System.getProperty("os.name").contains("Windows")) {
-					new ProcessBuilder("cmd", "/c", "C:\\CardJitsu\\Resources\\VLCPortable\\VLCPortable.exe --qt-start-minimized C:\\CardJitsu\\Resources\\Music\\Easy_Theme.mp3").inheritIO().start();
+					new ProcessBuilder("cmd", "/c", "C:\\CardJitsu\\Resources\\VLCPortable\\VLCPortable.exe --qt-start-minimized --loop C:\\CardJitsu\\Resources\\Music\\Easy_Theme.mp3").inheritIO().start();
 				} 
 				else if (zailtasunaZenb==2 && System.getProperty("os.name").contains("Windows")) {
-					new ProcessBuilder("cmd", "/c", "C:\\CardJitsu\\Resources\\VLCPortable\\VLCPortable.exe --qt-start-minimized C:\\CardJitsu\\Resources\\Music\\Normal_Theme.mp3").inheritIO().start();
+					new ProcessBuilder("cmd", "/c", "C:\\CardJitsu\\Resources\\VLCPortable\\VLCPortable.exe --qt-start-minimized --loop C:\\CardJitsu\\Resources\\Music\\Normal_Theme.mp3").inheritIO().start();
 				}
 				else if (zailtasunaZenb==3 && System.getProperty("os.name").contains("Windows")) {
-					new ProcessBuilder("cmd", "/c", "C:\\CardJitsu\\Resources\\VLCPortable\\VLCPortable.exe --qt-start-minimized C:\\CardJitsu\\Resources\\Music\\Hard_Theme.mp3").inheritIO().start();
+					new ProcessBuilder("cmd", "/c", "C:\\CardJitsu\\Resources\\VLCPortable\\VLCPortable.exe --qt-start-minimized --loop C:\\CardJitsu\\Resources\\Music\\Hard_Theme.mp3").inheritIO().start();
 				}
 			} 
 			catch (IOException e) {
